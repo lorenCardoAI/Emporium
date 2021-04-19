@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Core.Infrastructure.Repos
 {
-    public class LoanRepository : RepositoryBase<Domain.Entities.Application>, ILoanRepository
+    public class ApplicationRepository : RepositoryBase<Domain.Entities.Application>, IApplicationRepository
     {
-        public LoanRepository(CoreDbContext dbContext) : base(dbContext)
+        public ApplicationRepository(CoreDbContext dbContext) : base(dbContext)
         {
         }
 

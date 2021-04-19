@@ -14,12 +14,12 @@ namespace Core.Application.Commands.Loan
 {
     public class CreateLoanRequestHandler : IRequestHandler<CreateLoanRequestCommand, long>
     {
-        private readonly ILoanRepository _loans;
+        private readonly IApplicationRepository _loans;
         private readonly IMapper _mapper;
         private readonly ILogger<CreateLoanRequestHandler> _logger;
 
         public CreateLoanRequestHandler(IMapper mapper,
-            ILoanRepository loans, ILogger<CreateLoanRequestHandler> logger)
+            IApplicationRepository loans, ILogger<CreateLoanRequestHandler> logger)
         {
             _loans = loans ?? throw new ArgumentNullException(nameof(loans));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));

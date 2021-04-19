@@ -18,7 +18,7 @@ namespace Core.Infrastructure
                 options.UseSqlServer(configuration.GetConnectionString("CoreConnectionString")));
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
-            services.AddScoped<ILoanRepository, LoanRepository>();
+            services.AddScoped<IApplicationRepository, ApplicationRepository>();
 
             //services.Configure<EmailSettings>(c => configuration.GetSection("EmailSettings"));
             //services.AddTransient<IEmailService, EmailService>();

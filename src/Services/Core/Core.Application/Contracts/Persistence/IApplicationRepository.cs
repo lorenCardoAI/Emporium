@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Application.Contracts.Persistence
 {
-    public interface ILoanRepository : IAsyncRepository<Domain.Entities.Application>
+    public interface IApplicationRepository : IAsyncRepository<Domain.Entities.Application>
     {
         Task<IEnumerable<Domain.Entities.Application>> GetLoansBySMEID(int smeId);
     }
