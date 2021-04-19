@@ -1,4 +1,4 @@
-﻿using Core.Domain.Entities;
+﻿using Entities = Core.Domain.Entities;
 using Core.Infrastructure.EntityConfiguration;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,14 +13,15 @@ namespace Core.Infrastructure.Persistence
         {
         }
 
-        public DbSet<LoanRequest> LoanRequests { get; set; }
-        public DbSet<FinancingType> FinancingTypes { get; set; }
+        public DbSet<Entities.Application> Applications { get; set; }
+        public DbSet<Entities.ApplicationStatus> ApplicationStatuses { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new LoanRequestEntityConfiguration());
-            builder.ApplyConfiguration(new FinancingTypeEntityConfiguration());
+            builder.ApplyConfiguration(new ApplicationEntityConfiguration());
+            builder.ApplyConfiguration(new ApplicationStatusEntityConfiguration());
         }
     }
 }

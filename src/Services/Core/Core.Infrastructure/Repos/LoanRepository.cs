@@ -10,15 +10,15 @@ using System.Threading.Tasks;
 
 namespace Core.Infrastructure.Repos
 {
-    public class LoanRepository : RepositoryBase<LoanRequest>, ILoanRepository
+    public class LoanRepository : RepositoryBase<Domain.Entities.Application>, ILoanRepository
     {
         public LoanRepository(CoreDbContext dbContext) : base(dbContext)
         {
         }
 
-        public async Task<IEnumerable<LoanRequest>> GetLoansBySMEID(int smeId)
+        public async Task<IEnumerable<Domain.Entities.Application>> GetLoansBySMEID(int smeId)
         {
-            var orderList = await _dbContext.LoanRequests
+            var orderList = await _dbContext.Applications
                                 .Where(o => o.SMEId == smeId)
                                 .ToListAsync();
             return orderList;

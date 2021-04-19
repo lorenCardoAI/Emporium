@@ -18,7 +18,6 @@ namespace Core.Application.Commands.Loan
         private readonly IMapper _mapper;
         private readonly ILogger<CreateLoanRequestHandler> _logger;
 
-
         public CreateLoanRequestHandler(IMapper mapper,
             ILoanRepository loans, ILogger<CreateLoanRequestHandler> logger)
         {
@@ -30,14 +29,14 @@ namespace Core.Application.Commands.Loan
 
         public async Task<long> Handle(CreateLoanRequestCommand request, CancellationToken cancellationToken)
         {
-            var dbLoan = _mapper.Map<LoanRequest>(request);
-            var newOrder = await _loans.AddAsync(dbLoan);
+            var dbLoan = _mapper.Map<Domain.Entities.Application>(request);
+            var newApp = await _loans.AddAsync(dbLoan);
 
-            _logger.LogInformation($"Loan {dbLoan.LoanRequestId} is successfully created.");
+            _logger.LogInformation($"Loan {newApp.Id} is successfully created.");
 
             //await SendMail(newOrder);
 
-            return dbLoan.LoanRequestId;
+            return newApp.Id;
         }
     }
 

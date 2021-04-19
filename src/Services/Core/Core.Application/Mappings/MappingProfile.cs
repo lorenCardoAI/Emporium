@@ -11,12 +11,12 @@ namespace Core.Application.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<CreateLoanRequestCommand, LoanRequest>()
+            CreateMap<CreateLoanRequestCommand, Core.Domain.Entities.Application>()
                 .ForMember(c => c.DateCreated, opt => opt.Ignore())
                 .ForMember(c => c.DateUpdated, opt => opt.Ignore())
                 .ForMember(c => c.SMEId, opt => opt.MapFrom(src => 279481))
-                .ForMember(c => c.IsBullet, opt => opt.MapFrom(src => src.LoanDuration < 12))
-                .ForMember(c => c.FinancingTypeId, opt => opt.MapFrom(src => src.LoanDuration<12 ? 1:11)); 
+                .ForMember(c => c.Amount, opt => opt.MapFrom(src => src.RequestedAmount))
+                .ForMember(c => c.Duration, opt => opt.MapFrom(src => src.LoanDuration)); 
         }
     }
 }
